@@ -1,4 +1,6 @@
 import 'package:datingapp/utils/custom_theme.dart';
+import 'package:datingapp/views/home/components/circular_profile.dart';
+import 'package:datingapp/views/home/components/profile_card.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -92,7 +94,25 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ],
           ),
-        )
+        ),
+        const SizedBox(
+          height: 100,
+          child: CircularProfile(),
+        ),
+        ListTile(
+          title: const Text('Popular Profiles'),
+          trailing: TextButton(
+            onPressed: () {},
+            child: const Text(
+              'See All',
+              style: TextStyle(color: CustomTheme.violet),
+            ),
+          ),
+        ),
+        const SizedBox(
+          height: 400,
+          child: ProfileCard(),
+        ),
       ]),
     );
   }
