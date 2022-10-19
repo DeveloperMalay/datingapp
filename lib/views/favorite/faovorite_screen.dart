@@ -20,10 +20,11 @@ class _FavoriteScreenState extends State<FavoriteScreen> {
         padding: const EdgeInsets.all(8.0),
         child: GridView.builder(
             gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-                maxCrossAxisExtent: 200,
-                childAspectRatio: 2 / 4,
-                crossAxisSpacing: 20,
-                mainAxisSpacing: 20),
+              maxCrossAxisExtent: 200,
+              childAspectRatio: 2 / 4,
+              crossAxisSpacing: 20,
+              mainAxisSpacing: 20,
+            ),
             itemBuilder: (context, index) {
               return ClipRRect(
                 borderRadius: BorderRadius.circular(10),
