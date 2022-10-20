@@ -1,6 +1,6 @@
 import 'package:datingapp/utils/custom_theme.dart';
+import 'package:datingapp/views/payment/payment_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:sliding_up_panel/sliding_up_panel.dart';
 
 class AccountScreen extends StatefulWidget {
   const AccountScreen({Key? key}) : super(key: key);
@@ -12,15 +12,11 @@ class AccountScreen extends StatefulWidget {
 class _AccountScreenState extends State<AccountScreen> {
   @override
   Widget build(BuildContext context) {
-    BorderRadiusGeometry radius = const BorderRadius.only(
-      topLeft: Radius.circular(24.0),
-      topRight: Radius.circular(24.0),
-    );
     return SafeArea(
       child: Column(
         children: [
           const SizedBox(
-            height: 20,
+            height: 30,
           ),
           Stack(
             children: [
@@ -36,7 +32,7 @@ class _AccountScreenState extends State<AccountScreen> {
                 child: IconButton(
                     onPressed: () {},
                     icon: const Icon(
-                      Icons.add_circle_outlined,
+                      Icons.add_circle_rounded,
                       size: 40,
                       color: CustomTheme.violet,
                     )),
@@ -51,7 +47,7 @@ class _AccountScreenState extends State<AccountScreen> {
                 fontWeight: FontWeight.bold),
           ),
           const SizedBox(
-            height: 225,
+            height: 215,
           ),
           Container(
             height: 288,
@@ -61,8 +57,8 @@ class _AccountScreenState extends State<AccountScreen> {
               color: CustomTheme.lightViolet,
             ),
             child: Column(
-              children: const [
-                ListTile(
+              children: [
+                const ListTile(
                   leading: Icon(
                     Icons.edit,
                     color: Colors.white,
@@ -73,10 +69,10 @@ class _AccountScreenState extends State<AccountScreen> {
                         color: Colors.white, fontWeight: FontWeight.bold),
                   ),
                 ),
-                Divider(
+                const Divider(
                   color: Colors.white,
                 ),
-                ListTile(
+                const ListTile(
                   leading: Icon(
                     Icons.settings,
                     color: Colors.white,
@@ -87,24 +83,42 @@ class _AccountScreenState extends State<AccountScreen> {
                         color: Colors.white, fontWeight: FontWeight.bold),
                   ),
                 ),
-                Divider(
+                const Divider(
                   color: Colors.white,
                 ),
                 ListTile(
-                  leading: Icon(
+                  onTap: () {
+                    Navigator.of(context).push(
+                      PageRouteBuilder(
+                        transitionDuration: const Duration(milliseconds: 500),
+                        pageBuilder: (context, animation, secondaryAnimation) =>
+                            const PaymentScreen(),
+                        transitionsBuilder:
+                            (context, animation, secondaryAnimation, child) {
+                          return SlideTransition(
+                            position: Tween<Offset>(
+                                    begin: const Offset(1, 0), end: Offset.zero)
+                                .animate(animation),
+                            child: child,
+                          );
+                        },
+                      ),
+                    );
+                  },
+                  leading: const Icon(
                     Icons.help,
                     color: Colors.white,
                   ),
-                  title: Text(
-                    'Help & Support',
+                  title: const Text(
+                    'Buy Package',
                     style: TextStyle(
                         color: Colors.white, fontWeight: FontWeight.bold),
                   ),
                 ),
-                Divider(
+                const Divider(
                   color: Colors.white,
                 ),
-                ListTile(
+                const ListTile(
                   leading: Icon(
                     Icons.password,
                     color: Colors.white,

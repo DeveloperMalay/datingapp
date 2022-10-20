@@ -1,7 +1,7 @@
 import 'package:datingapp/utils/custom_theme.dart';
 import 'package:datingapp/views/home/components/circular_profile.dart';
 import 'package:datingapp/views/home/components/profile_card.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:datingapp/views/search_screen/search_sceeen.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -53,6 +53,25 @@ class _HomeScreenState extends State<HomeScreen> {
               Expanded(
                 flex: 6,
                 child: TextField(
+                  onTap: () {
+                    Navigator.of(context).push(
+                      PageRouteBuilder(
+                        transitionDuration: const Duration(milliseconds: 500),
+                        pageBuilder: (context, animation, secondaryAnimation) =>
+                            const SearchScreen(),
+                        transitionsBuilder:
+                            (context, animation, secondaryAnimation, child) {
+                          return SlideTransition(
+                            position: Tween<Offset>(
+                                    begin: const Offset(1, 0), end: Offset.zero)
+                                .animate(animation),
+                            child: child,
+                          );
+                        },
+                      ),
+                    );
+                  },
+                  readOnly: true,
                   decoration: InputDecoration(
                     prefixIcon: const Icon(
                       Icons.search_rounded,
@@ -78,20 +97,20 @@ class _HomeScreenState extends State<HomeScreen> {
               const SizedBox(
                 width: 15,
               ),
-              Expanded(
-                flex: 1,
-                child: CupertinoButton(
-                  padding: const EdgeInsets.all(0),
-                  color: const Color.fromARGB(255, 227, 227, 255),
-                  child: const Center(
-                      child: Icon(
-                    Icons.tune_outlined,
-                    color: Color.fromARGB(255, 93, 90, 241),
-                    size: 30,
-                  )),
-                  onPressed: () {},
-                ),
-              ),
+              // Expanded(
+              //   flex: 1,
+              //   child: CupertinoButton(
+              //     padding: const EdgeInsets.all(0),
+              //     color: const Color.fromARGB(255, 227, 227, 255),
+              //     child: const Center(
+              //         child: Icon(
+              //       Icons.tune_outlined,
+              //       color: Color.fromARGB(255, 93, 90, 241),
+              //       size: 30,
+              //     )),
+              //     onPressed: () {},
+              //   ),
+              // ),
             ],
           ),
         ),

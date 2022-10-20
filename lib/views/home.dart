@@ -19,6 +19,8 @@ class _HomeState extends State<Home> {
       child: Scaffold(
         bottomNavigationBar: Container(
           decoration: const BoxDecoration(
+            borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(20), topRight: Radius.circular(20)),
             color: Colors.white,
             boxShadow: [
               BoxShadow(
